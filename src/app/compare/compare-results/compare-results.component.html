@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-6 cold-sm-offset-1 col-md-offset-3 text-center">
+    <h2>Your Results</h2>
+    <button class="btn btn-success" (click)="onStartSetData()">Set Data</button>
+    <button class="btn btn-danger" (click)="onClearData()">Clear Data on Server</button>
+    <button class="btn btn-primary" (click)="onGetResults()">Get Results</button>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-6 cold-sm-offset-1 col-md-offset-3 text-center">
+    <h3>Select Filter</h3>
+    <div class="list-group">
+      <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('age')" [ngClass]="{active: filter == 'age'}">Your Age: {{ user.age }}</a>
+      <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('height')" [ngClass]="{active: filter == 'height'}">Your Height: {{ user.height }}</a>
+      <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('income')" [ngClass]="{active: filter == 'income'}">Your Income: {{ user.income }}</a>
+    </div>
+    <div>
+      <button class="btn" [ngClass]="{'btn-default': !lowerIsBetter, 'btn-primary': lowerIsBetter}" (click)="onSelectLower(true)">Lower is better</button>
+      <button class="btn" [ngClass]="{'btn-default': lowerIsBetter, 'btn-primary': !lowerIsBetter}" (click)="onSelectLower(false)">Higher is better</button>
+    </div>
+    <hr>
+    <div class="loader" *ngIf="!compareData && !didFail">Loading...</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-6 cold-sm-offset-1 col-md-offset-3 text-center">
+        <div class="alert alert-danger" *ngIf="didFail">
+          An error occurred, please try again!
+        </div>
+      </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let data of compareData" [ngClass]="getListGroupItemClass(data)">
+        Age: {{ data.age }} | Height: {{ data.height }} | Income: {{ data.income }}
+      </li>
+    </ul>
+  </div>
+</div>
+
