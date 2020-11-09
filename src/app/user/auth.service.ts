@@ -7,8 +7,8 @@ import {Subject} from 'rxjs';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, CognitoUserSession, AuthenticationDetails } from 'amazon-cognito-identity-js';
 
 const POOL_DATA = {
-  UserPoolId: 'us-west-2_e8ih1jHGF',
-  ClientId: '3i3i581ph15g8e8vvl17k5enh8'
+  UserPoolId: '',
+  ClientId: ''
 };
 
 const userPool = new CognitoUserPool(POOL_DATA);
