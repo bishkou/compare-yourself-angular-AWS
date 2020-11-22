@@ -6,10 +6,7 @@ import { User } from './user.model';
 import {Subject} from 'rxjs';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, CognitoUserSession, AuthenticationDetails } from 'amazon-cognito-identity-js';
 
-const POOL_DATA = {
-  UserPoolId: '',
-  ClientId: ''
-};
+
 
 const userPool = new CognitoUserPool(POOL_DATA);
 
