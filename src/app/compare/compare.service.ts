@@ -48,14 +48,7 @@ export class CompareService {
     });
   }
 
-  onRetrieveData(all = true) {
-    this.dataLoaded.next(null);
-    this.dataLoadFailed.next(false);
-    this.authService.getAuthenticatedUser().getSession((err, session) => {
-      const queryParam = 'accessToken=' + session.getAccessToken().getJwtToken();
-      let urlParam = 'all';
-      if (!all) {
-        urlParam = 'single';
+
       }
       this.http.get('https://5d6l784bz5.execute-api.us-west-2.amazonaws.com/dev/compare-yourself/' + urlParam, {
         headers: new HttpHeaders({Authorization: session.getIdToken().getJwtToken()}),
